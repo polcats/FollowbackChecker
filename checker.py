@@ -19,7 +19,15 @@ def parseHTML(input):
     return output
 
 diff = set(parseHTML(g_following)) - set(parseHTML(g_followers))
-print(diff)
+diff2 = set(parseHTML(g_followers)) - set(parseHTML(g_following))
+
+print("Doesn't follow back: ")
+for item in diff:
+    print (item)
+print("Need to follow back: ")
+for item in diff2:
+    print (item)
+
 
 
 
