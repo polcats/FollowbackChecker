@@ -40,7 +40,7 @@ jobs:
               run: |
                   echo "NOTFOLLOWING=${NOTFOLLOWING}"
                   echo "NEEDTOFOLLOW=${NEEDTOFOLLOW}"
-              # id: checker
+
             - if: steps.cneedf.outputs.needf != "None"
               name: Create issue if someone has unfollowed
               run: echo "Test"
