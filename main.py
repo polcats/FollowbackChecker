@@ -10,7 +10,11 @@ def main():
 
 def checkEmpty(set):
     if set:
-        print(set)
+        str = ""
+        for item in set:
+            str += item+","
+
+        print(str[:-1])
     else:
         print("None")
 
