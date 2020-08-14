@@ -30,6 +30,10 @@ jobs:
               run: echo '::set-env name=NOTFOLLOWING::$(python main.py --notf)'
             - name: Check Need to Follow
               run: echo '::set-env name=NEEDTOFOLLOW::$(python main.py --needf)'
+            - name: Print ENV
+              run: |
+                  echo "NOTFOLLOWING=${NOTFOLLOWING}"
+                  echo "NEEDTOFOLLOW=${NEEDTOFOLLOW}"
               # id: checker
             # - if: steps.checker.outputs.notf != "None"
             # - name: Create issue if someone has unfollowed
