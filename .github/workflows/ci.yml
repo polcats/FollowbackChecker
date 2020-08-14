@@ -42,7 +42,12 @@ jobs:
 
             - if: env.NEEDTOFOLLOW != ''
               name: Create issue if someone needs to be followed
-              run: echo "${{steps.followers.outputs.needf}}"
+              # run: echo "${{steps.followers.outputs.needf}}"
+              uses: JasonEtco/create-an-issue@v2
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  filename: .github/needf.md
 
             - if: env.NOTFOLLOWING != ''
               name: Create issue if someone needs to be unfollowed
