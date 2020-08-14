@@ -26,10 +26,9 @@ jobs:
                   python -m pip install --upgrade pip
                   pip install beautifulsoup4
 
-            - name: Crosscheck followers
-            - name: Not Following
+            - name: Check Not Following
               run: echo '::set-env name=NOTFOLLOWING::$(python main.py --notf)'
-            - name: Need to Follow
+            - name: Check Need to Follow
               run: echo '::set-env name=NEEDTOFOLLOW::$(python main.py --needf)'
               # id: checker
             # - if: steps.checker.outputs.notf != "None"
