@@ -27,17 +27,24 @@ jobs:
                   pip install beautifulsoup4
 
             - name: Check Not Following
-              run: echo ::set-env name=NOTFOLLOWING::$(python main.py --notf)
+              run: |
+                  echo ::set-env name=NOTFOLLOWING::$(python main.py --notf)
+                  run: echo '::set-env name=notf::$NOTFOLLOWING'
+              id: cnotf
             - name: Check Need to Follow
-              run: echo ::set-env name=NEEDTOFOLLOW::$(python main.py --needf)
+              run: |
+                  echo ::set-env name=NEEDTOFOLLOW::$(python main.py --needf)
+                  run: echo '::set-env name=needf::$NEEDTOFOLLOW'
+              id: cneedf
             - name: Print Follow Details
               run: |
                   echo "NOTFOLLOWING=${NOTFOLLOWING}"
                   echo "NEEDTOFOLLOW=${NEEDTOFOLLOW}"
+                  echo "NEEDTOFOLLOW=${steps.cneedf.needf}"
               # id: checker
-            - name: Create issue if someone has unfollowed
-              if: ${NEEDTOFOLLOW} != "None"
-              run: echo "Test"
+            # - name: Create issue if someone has unfollowed
+            # if: steps.cnotf.notf != "None"
+            # run: echo "Test"
             #   uses: JasonEtco/create-an-issue@v2
             #   env:
             #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
