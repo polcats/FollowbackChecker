@@ -1,5 +1,5 @@
 ---
-title: {{ env.NEEDTOFOLLOW }} has followed you
+title: "{{ env.NEEDTOFOLLOW }} has followed you"
 assignees: polcats
 labels: enchancement
 ---
