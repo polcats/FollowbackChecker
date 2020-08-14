@@ -29,12 +29,12 @@ jobs:
             - name: Check Not Following
               run: |
                   echo ::set-env name=NOTFOLLOWING::$(python main.py --notf)
-                  run: echo '::set-env name=notf::$NOTFOLLOWING'
+                  echo '::set-env name=notf::$NOTFOLLOWING'
               id: cnotf
             - name: Check Need to Follow
               run: |
                   echo ::set-env name=NEEDTOFOLLOW::$(python main.py --needf)
-                  run: echo '::set-env name=needf::$NEEDTOFOLLOW'
+                  echo '::set-env name=needf::$NEEDTOFOLLOW'
               id: cneedf
             - name: Print Follow Details
               run: |
