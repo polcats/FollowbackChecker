@@ -20,7 +20,7 @@ jobs:
                   pip install beautifulsoup4
 
            - name: set environment variables
-             uses: allenevans/set-env@v1.0.0
+           - uses: allenevans/set-env@v1.0.0
              with:
                  NOTFOLLOWING: 'None'
                  NEEDTOFOLLOW: 'None'
@@ -47,4 +47,4 @@ jobs:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                   needf: $NEEDTOFOLLOW
               with:
-                  filename: .github/needf.md
+                  filename: .github/notf.md
