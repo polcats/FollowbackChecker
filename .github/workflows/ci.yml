@@ -44,7 +44,7 @@ jobs:
               name: Create issue if someone needs to be followed
               run: echo "${{steps.followers.outputs.needf}}"
 
-            - if: ${{steps.followers.outputs.notf}}
+            - if: ${{steps.followers.outputs.notf != ''}}
               name: Create issue if someone needs to be unfollowed
               run: echo "${{steps.followers.outputs.notf}}"
             #   uses: JasonEtco/create-an-issue@v2
