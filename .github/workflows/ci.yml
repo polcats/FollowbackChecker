@@ -41,7 +41,7 @@ jobs:
                   echo "NOTFOLLOWING=${NOTFOLLOWING}"
                   echo "NEEDTOFOLLOW=${NEEDTOFOLLOW}"
 
-            - if: steps.cneedf.outputs.needf != "None"
+            - if: ${{steps.cneedf.outputs.needf != "None"}}
               name: Create issue if someone has unfollowed
               run: echo "Test"
             #   uses: JasonEtco/create-an-issue@v2
