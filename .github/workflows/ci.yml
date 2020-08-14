@@ -11,7 +11,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - name: set environment variables
+            - name: Setup environment variables
               uses: allenevans/set-env@v1.0.0
               with:
                   NOTFOLLOWING: "None"
