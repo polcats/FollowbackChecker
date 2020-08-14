@@ -40,9 +40,13 @@ jobs:
                   echo '::set-output name=needf::$NEEDTOFOLLOW'
               id: followers
 
-            - if: $NEEDTOFOLLOW
+            - if: ${{steps.followers.outputs.needf}}
               name: Create issue if someone needs to be followed
               run: echo "${{steps.followers.outputs.needf}}"
+
+            - if: ${{steps.followers.outputs.notf}}
+              name: Create issue if someone needs to be unfollowed
+              run: echo "${{steps.followers.outputs.notf}}"
             #   uses: JasonEtco/create-an-issue@v2
             #   env:
             #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
