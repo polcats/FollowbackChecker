@@ -36,7 +36,7 @@ jobs:
                   echo "NEEDTOFOLLOW=${NEEDTOFOLLOW}"
               # id: checker
             - name: Create issue if someone has unfollowed
-              if: NEEDTOFOLLOW != "None"
+              if: ${{NEEDTOFOLLOW}} != "None"
               run: echo "Test"
             #   uses: JasonEtco/create-an-issue@v2
             #   env:
