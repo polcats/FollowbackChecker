@@ -1,4 +1,4 @@
-name: Python package
+name: Followback Checker
 
 on: [push]
 
@@ -29,7 +29,7 @@ jobs:
             - name: Crosscheck followers
               run: |
                   echo '::set-env name=NOTFOLLOWING::$(python main.py --notf)'
-                  echo '::set-env name=NEEDTOFOLLOW::$$(python main.py --needf)'
+                  echo '::set-env name=NEEDTOFOLLOW::$(python main.py --needf)'
               id: checker
             # - if: steps.checker.outputs.notf != "None"
             # - name: Create issue if someone has unfollowed
