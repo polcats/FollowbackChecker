@@ -40,11 +40,10 @@ jobs:
               run: |
                   echo "NOTFOLLOWING=${NOTFOLLOWING}"
                   echo "NEEDTOFOLLOW=${NEEDTOFOLLOW}"
-                  echo "NEEDTOFOLLOW=${steps.cneedf.outputs.needf}"
               # id: checker
-            # - name: Create issue if someone has unfollowed
-            # if: steps.cnotf.notf != "None"
-            # run: echo "Test"
+            - name: Create issue if someone has unfollowed
+            if: steps.cneedf.outputs.needf != "None"
+            run: echo "Test"
             #   uses: JasonEtco/create-an-issue@v2
             #   env:
             #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
