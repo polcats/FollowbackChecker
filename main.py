@@ -12,9 +12,9 @@ def checkEmpty(set):
     if set:
         str = ""
         for item in set:
-            str += item+","
+            str += " " + item + ","
 
-        print(str[:-1])
+        print(str[:-1].strip())
     else:
         print("None")
 
