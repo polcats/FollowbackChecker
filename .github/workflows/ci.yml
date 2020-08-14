@@ -13,18 +13,15 @@ jobs:
               with:
                   python-version: "3.x"
                   architecture: "x64"
-
             - name: Install dependencies
               run: |
                   python -m pip install --upgrade pip
                   pip install beautifulsoup4
-
            - uses: allenevans/set-env@v1.0.0
            - name: set environment variables
              with:
                  NOTFOLLOWING: 'None'
                  NEEDTOFOLLOW: 'None'
-
             - name: Crosscheck followers
               run: |
                   echo "##[set-output name=notf;]$(python main.py --notf)"
@@ -32,7 +29,6 @@ jobs:
                   run: echo '::set-env name=NOTFOLLOWING::$steps.checker.outputs.notf'
                   run: echo '::set-env name=NEEDTOFOLLOW::$steps.checker.outputs.needf'
               id: checker
-
             - if: steps.checker.outputs.notf != "None"
             - uses: JasonEtco/create-an-issue@v2
             - name: Create issue if someone has unfollowed
@@ -41,7 +37,6 @@ jobs:
                   notf: $NOTFOLLOWING
               with:
                   filename: .github/notf.md
-
             - if: steps.checker.outputs.needf != "None"
             - uses: JasonEtco/create-an-issue@v2
             - name: Create issue if someone has followed
