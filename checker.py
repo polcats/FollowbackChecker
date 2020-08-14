@@ -4,7 +4,6 @@ import bs4
 g_followers = urllib.request.urlopen('https://github.com/polcats?tab=followers').read()
 g_following = urllib.request.urlopen('https://github.com/polcats?tab=following').read()
 
-
 def parseHTML(input):
     html = bs4.BeautifulSoup(input, features='html.parser')
     output = []
@@ -18,15 +17,11 @@ def parseHTML(input):
 
     return output
 
-diff = set(parseHTML(g_following)) - set(parseHTML(g_followers))
-diff2 = set(parseHTML(g_followers)) - set(parseHTML(g_following))
+def notFollowingBack():
+    return set(parseHTML(g_following)) - set(parseHTML(g_followers))
 
-print("Doesn't follow back: ")
-for item in diff:
-    print (item)
-print("Need to follow back: ")
-for item in diff2:
-    print (item)
+def needToFollowBack():
+    return set(parseHTML(g_followers)) - set(parseHTML(g_following))
 
 
 
