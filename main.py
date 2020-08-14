@@ -15,8 +15,6 @@ def checkEmpty(set):
             str += " " + item + ","
 
         print(str[:-1].strip())
-    else:
-        print("None")
 
 if __name__ == "__main__":
     main()

@@ -41,8 +41,8 @@ jobs:
                   echo "NOTFOLLOWING=${NOTFOLLOWING}"
                   echo "NEEDTOFOLLOW=${NEEDTOFOLLOW}"
 
-            - if: ${{steps.cneedf.outputs.needf}}
-              name: Create issue if someone has unfollowed
+            - if: ${{NEEDTOFOLLOW}}
+              name: Create issue if someone needs to be followed
               run: echo "Test"
             #   uses: JasonEtco/create-an-issue@v2
             #   env:
