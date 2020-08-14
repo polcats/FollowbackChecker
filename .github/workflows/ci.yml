@@ -27,21 +27,19 @@ jobs:
                   pip install beautifulsoup4
 
             - name: Check Not Following
-              run: |
-                  echo ::set-env name=NOTFOLLOWING::$(python main.py --notf)
-                  echo '::set-env name=notf::$NOTFOLLOWING'
+              run: echo ::set-env name=NOTFOLLOWING::$(python main.py --notf)
               id: cnotf
             - name: Check Need to Follow
-              run: |
-                  echo ::set-env name=NEEDTOFOLLOW::$(python main.py --needf)
-                  echo '::set-env name=needf::$NEEDTOFOLLOW'
+              run: echo ::set-env name=NEEDTOFOLLOW::$(python main.py --needf)
               id: cneedf
             - name: Print Follow Details
               run: |
                   echo "NOTFOLLOWING=${NOTFOLLOWING}"
                   echo "NEEDTOFOLLOW=${NEEDTOFOLLOW}"
+                  echo '::set-env name=notf::$NOTFOLLOWING'
+                  echo '::set-env name=needf::$NEEDTOFOLLOW'
 
-            - if: ${{NEEDTOFOLLOW}}
+            - if: ${{steps.cneedf.outputs.needf}}
               name: Create issue if someone needs to be followed
               run: echo "Test"
             #   uses: JasonEtco/create-an-issue@v2
