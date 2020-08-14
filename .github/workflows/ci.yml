@@ -40,7 +40,7 @@ jobs:
                   echo '::set-output name=needf::$NEEDTOFOLLOW'
               id: followers
 
-            - if: ${{steps.followers.outputs.needf != ""}}
+            - if: ${{steps.followers.outputs.needf != ''}}
               name: Create issue if someone needs to be followed
               run: echo "${{steps.followers.outputs.needf}}"
 
