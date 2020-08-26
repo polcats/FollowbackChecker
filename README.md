@@ -8,11 +8,14 @@ Github crosschecker for those who follow me and who I should follow. Automatical
 
 ## How to use
 1. Fork this repo
-2. Modify `check.py` and update the github profile link to your own.
-3. Modify `needf.md` and `notf.md` inside `/.github`, change the assignee to your github username
-3. ???
-4. Profit
+2. Enable `Issues` in the `Settings` of the forked repo
+3. Modify `check.py` and update the github profile link to your own.
+4. Modify `needf.md` and `notf.md` inside `/.github`, change the assignee to your github username
+5. ???
+6. Profit
 
 ### Modifying the check frequency
 1. You may change the frequency to your own liking
 2. Change the `schedule` on /.github/workflow/ci.yml, the default is every 4 hours
+
+Note: The first run will trigger 4 hours after you set this up.
