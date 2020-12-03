@@ -13,7 +13,7 @@ jobs:
             - uses: actions/checkout@v2
               
             - name: Setup environment variables
-              run: 
+              run: |
                 echo "name=NOTFOLLOWING::NONE" >> $GITHUB_ENV
                 echo "name=NEEDTOFOLLOW::NONE" >> $GITHUB_ENV
 
@@ -32,14 +32,14 @@ jobs:
               run: echo "name=NOTFOLLOWING::$(python main.py --notf)" >> $GITHUB_ENV
               id: cnotf
             - name: Check Need to Follow
-              run: echo "name=NEEDTOFOLLOW::$(python main.py --needf)">> $GITHUB_ENV
+              run: echo "name=NEEDTOFOLLOW::$(python main.py --needf)" >> $GITHUB_ENV
               id: cneedf
             - name: Print Follow Details
               run: |
-                  echo "NOTFOLLOWING=${NOTFOLLOWING}"
-                  echo "NEEDTOFOLLOW=${NEEDTOFOLLOW}"
+                  echo ${NOTFOLLOWING}
+                  echo ${NEEDTOFOLLOW}
 
-            - if: env.NEEDTOFOLLOW != ''
+            - if: ${NEEDTOFOLLOW} != ''
               name: Create issue if someone needs to be followed
               uses: JasonEtco/create-an-issue@v2
               env:
@@ -47,7 +47,7 @@ jobs:
               with:
                   filename: .github/needf.md
 
-            - if: env.NOTFOLLOWING != ''
+            - if: ${NOTFOLLOWING} != ''
               name: Create issue if someone needs to be unfollowed
               uses: JasonEtco/create-an-issue@v2
               env:
