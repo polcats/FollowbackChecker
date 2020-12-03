@@ -18,4 +18,4 @@ Github crosschecker for those who follow me and who I should follow. Automatical
 1. You may change the frequency to your own liking
 2. Change the `schedule` on /.github/workflow/ci.yml, the default is every 4 hours
 
-Note: The first run will trigger 4 hours after you set this up.
+Note: The first run will trigger 4 hours after you set this up
