@@ -1,9 +1,9 @@
 name: Followback Checker
 
 on:
-    workflow_dispatch:
-    #schedule:
-    #    - cron: "*/1 * * * *"
+    #workflow_dispatch:
+    schedule:
+        - cron: "* */4 * * *"
 
 jobs:
     build:
