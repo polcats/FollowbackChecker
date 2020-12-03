@@ -32,10 +32,10 @@ jobs:
                   pip install beautifulsoup4
 
             - name: Check Not Following
-              run: echo "name=NOTFOLLOWING::$(python main.py --notf)" >> $GITHUB_ENV
+              run: echo "NOTFOLLOWING=$(python main.py --notf)" >> $GITHUB_ENV
               id: cnotf
             - name: Check Need to Follow
-              run: echo "name=NEEDTOFOLLOW::$(python main.py --needf)" >> $GITHUB_ENV
+              run: echo "NEEDTOFOLLOW=$(python main.py --needf)" >> $GITHUB_ENV
               id: cneedf
             - name: Print Follow Details
               run: |
