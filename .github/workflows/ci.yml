@@ -11,12 +11,11 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
-
+              
             - name: Setup environment variables
-              uses: allenevans/set-env@v1.0.0
-              with:
-                  NOTFOLLOWING: "None"
-                  NEEDTOFOLLOW: "None"
+              env: 
+                NEEDTOFOLLOW: "None"
+                NOTFOLLOWING: "None"
 
             - name: Set up Python
               uses: actions/setup-python@v2
