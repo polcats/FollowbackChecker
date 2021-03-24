@@ -11,8 +11,6 @@ Github crosschecker for those who follow me and who I should follow. Automatical
 2. Enable `Issues` in the `Settings` of the forked repo
 3. Modify `check.py` and update the github profile link to your own.
 4. Modify `needf.md` and `notf.md` inside `/.github`, change the assignee to your github username
-5. ???
-6. Profit
 
 ### Modifying the check frequency
 1. You may change the frequency to your own liking
