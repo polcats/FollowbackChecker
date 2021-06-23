@@ -1,27 +1,41 @@
 import urllib.request
 import bs4
+import json
 
-g_followers = urllib.request.urlopen('https://github.com/polcats?tab=followers').read()
-g_following = urllib.request.urlopen('https://github.com/polcats?tab=following').read()
+g_github_username = 'polcats'
 
-def parseHTML(input):
-    html = bs4.BeautifulSoup(input, features='html.parser')
-    output = []
-    for follower in html.findAll('a', {'class' : 'd-inline-block no-underline mb-1', 'data-hovercard-type':'user'}):
-        full_name = ''
-        for name in follower.findAll('span'):
-            if len(name.text) > 0:
-                full_name += name.text + ' '
-        full_name.strip()
-        output.append(full_name)
+def fetchUsers(mode):
+    page = 1
+    has_more = True
+    users = []
+    url = 'https://api.github.com/users/' + g_github_username + '/' + mode + '?per_page=100'
 
-    return output
+    while has_more:
+        fetched_users = json.loads(urllib.request.urlopen(url + '&page=' + str(page)).read())
+        if len(fetched_users) == 0:
+            has_more = False
+        else:
+            users.extend(fetched_users)
+            page += 1
+    return users
+
+def getUserNames(data):
+    if len(data) == 0:
+        return []
+    else:
+        usernames = []
+        for item in data:
+            usernames.append(item['login'])
+        return usernames
+
+g_followers = getUserNames(fetchUsers('followers'))
+g_following = getUserNames(fetchUsers('following'))
 
 def notFollowingBack():
-    return set(parseHTML(g_following)) - set(parseHTML(g_followers))
+    return set(g_following) - set(g_followers)
 
 def needToFollowBack():
-    return set(parseHTML(g_followers)) - set(parseHTML(g_following))
+    return set(g_followers) - set(g_following)
 
 
 
