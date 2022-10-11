@@ -3,7 +3,7 @@ name: Followback Checker
 on:
     #workflow_dispatch:
     schedule:
-        - cron: "* */4 * * *"
+        - cron: "0 0 * * *"
 
 jobs:
     build:
